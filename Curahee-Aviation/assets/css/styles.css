@@ -40,15 +40,15 @@ header {
     margin-bottom: 15px;
 }
 
-/* Consistent Logo Sizing - NO responsive shrinking */
+/* Logo Sizing - Responsive */
 .header-logo,
 .header-logo-small {
     height: 120px;
     width: auto;
-    max-height: 120px;
-    min-height: 120px;
+    max-width: 100%;
     display: block;
     margin: 0 auto;
+    object-fit: contain;
 }
 
 h1 {
@@ -97,6 +97,24 @@ nav a:hover {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.95);
+}
+
+/* Aircraft Image Container - Homepage */
+.aircraft-image-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.aircraft-image-container img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .carousel {
@@ -210,7 +228,7 @@ nav a:hover {
 }
 
 .features li::before {
-    content: '✈️ ';
+    content: 'âœˆï¸ ';
     margin-right: 10px;
     flex-shrink: 0;
 }
@@ -583,7 +601,7 @@ nav a:hover {
 }
 
 .bring-list li::before {
-    content: '📋 ';
+    content: 'ðŸ“‹ ';
     margin-right: 10px;
     flex-shrink: 0;
 }
@@ -603,15 +621,13 @@ footer p {
     color: #6b7280;
 }
 
-/* Responsive Design - Logo stays SAME SIZE */
+/* Responsive Design - Mobile Optimized */
 @media (max-width: 768px) {
-    /* Logo stays same size - NO shrinking */
+    /* Logo scales down for tablet/mobile */
     .header-logo,
     .header-logo-small {
-        height: 120px;
-        width: auto;
-        max-height: 120px;
-        min-height: 120px;
+        height: 80px;
+        max-width: 90%;
     }
     
     /* Grid layouts become single column */
@@ -648,6 +664,16 @@ footer p {
         height: 250px;
     }
     
+    /* Aircraft images adjust for tablet */
+    .aircraft-image-container img,
+    #mainGalleryPhoto {
+        height: 250px;
+    }
+    
+    .aircraft-gallery-preview > div {
+        height: 250px !important;
+    }
+    
     .contact-info-display {
         flex-direction: column;
         gap: 15px;
@@ -670,26 +696,47 @@ footer p {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
+        padding: 10px 5px;
+        font-size: 0.95em;
     }
     
     .specs li span:last-child {
         text-align: left;
         margin-left: 0;
+        padding-left: 0;
+    }
+    
+    /* Better list item wrapping on mobile */
+    ul li, ol li {
+        padding-left: 5px;
+        margin-bottom: 8px;
+    }
+    
+    .features li::before {
+        margin-right: 8px;
     }
 }
 
 @media (max-width: 480px) {
-    /* Logo STILL stays same size */
+    /* Logo scales down further for small phones */
     .header-logo,
     .header-logo-small {
-        height: 180px;
-        width: auto;
-        max-height: 180px;
-        min-height: 180px;
+        height: 60px;
+        max-width: 85%;
     }
     
     .carousel {
         height: 200px;
+    }
+    
+    /* Aircraft images adjust for small phones */
+    .aircraft-image-container img,
+    #mainGalleryPhoto {
+        height: 200px;
+    }
+    
+    .aircraft-gallery-preview > div {
+        height: 200px !important;
     }
     
     h1 {
