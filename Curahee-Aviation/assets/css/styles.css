@@ -26,29 +26,21 @@ body {
     overflow-x: hidden;
 }
 
-/* Header Styles with Consistent Logo Sizing */
-header {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 .header-logo-container {
     margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  /* Prevents overflow outside the header */
 }
 
-/* Consistent Logo Sizing - NO responsive shrinking */
 .header-logo,
 .header-logo-small {
     height: 120px;
     width: auto;
-    max-height: 120px;
-    min-height: 120px;
+    max-width: 100%;  /* Prevents breaking out horizontally */
     display: block;
-    margin: 0 auto;
 }
 
 h1 {
@@ -605,14 +597,7 @@ footer p {
 
 /* Responsive Design - Logo stays SAME SIZE */
 @media (max-width: 768px) {
-    /* Logo stays same size - NO shrinking */
-    .header-logo,
-    .header-logo-small {
-        height: 120px;
-        width: auto;
-        max-height: 120px;
-        min-height: 120px;
-    }
+ 
     
     /* Grid layouts become single column */
     .main-content,
@@ -679,14 +664,7 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    /* Logo STILL stays same size */
-    .header-logo,
-    .header-logo-small {
-        height: 180px;
-        width: auto;
-        max-height: 180px;
-        min-height: 180px;
-    }
+
     
     .carousel {
         height: 200px;
