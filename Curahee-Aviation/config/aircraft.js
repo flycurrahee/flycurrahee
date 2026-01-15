@@ -13,7 +13,7 @@ const AIRCRAFT_CONFIG = {
     
     // Avionics Suite - [ins. avionics card below aircraft specs]
     avionics: {
-        garminSuite: "Avionics Suite",
+        garminSuite: "Garmin Suite",
         intercom: "GNC 255 Intercom",
         gps: "Garmin 650 GPS",
         navCom: "Garmin NAV/Com",
