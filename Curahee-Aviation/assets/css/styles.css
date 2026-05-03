@@ -164,7 +164,7 @@ nav a.nav-active {
 }
 
 .features li::before {
-    content: '✈️ ';
+    content: '– ';
     margin-right: 10px;
     flex-shrink: 0;
 }
@@ -493,7 +493,7 @@ nav a.nav-active {
 }
 
 .bring-list li::before {
-    content: '📋 ';
+    content: '– ';
     margin-right: 10px;
     flex-shrink: 0;
 }
