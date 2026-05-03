@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Currahee Aviation</title>
-    <meta name="description" content="Aircraft rental rates and policies at Currahee Aviation. Competitive wet and dry rates for Cessna 172 rental at KTOC.">
-    <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+    <meta name="description" content="Aircraft rental rates and policies at Currahee Aviation. Competitive rates for Cessna 172 rental at KTOC Toccoa Regional Airport.">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
     <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <h1 class="sr-only">Pricing — Currahee Aviation</h1>
             <div class="header-logo-container">
                 <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo-small" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
             </div>
@@ -24,7 +28,8 @@
             </nav>
         </header>
 
-        <div class="pricing-grid">
+        <main>
+        <div style="max-width: 600px; margin: 0 auto 30px auto;">
             <div class="rate-card wet">
                 <h2>Wet Rate</h2>
                 <div class="rate"><span id="wet-rate">$180</span></div>
@@ -35,32 +40,15 @@
                         <li style="margin-bottom: 5px;">Aircraft rental</li>
                         <li style="margin-bottom: 5px;">Standard avionics and equipment</li>
                         <li style="margin-bottom: 5px;">Pre-flight inspection</li>
-                        <li style="margin-bottom: 5px;">Customer provides fuel</li>
                     </ul>
                 </div>
-                <p><strong id="wet-rate-best-for">Best for standard flight operations</strong></p>
-            </div>
-            
-            <div class="rate-card dry">
-                <h2>Dry Rate</h2>
-                <div class="rate"><span id="dry-rate">Available on Request</span></div>
-                <p style="font-size: 1.1em; margin-bottom: 20px;"><strong>Per Hour</strong></p>
-                <h3>Includes:</h3>
-                <div style="text-align: left; margin: 15px 0; padding: 0 10px;">
-                    <ul id="dry-rate-includes" style="margin: 0; padding-left: 20px; list-style-type: disc;">
-                        <li style="margin-bottom: 5px;">Aircraft rental only</li>
-                        <li style="margin-bottom: 5px;">Customer provides fuel</li>
-                        <li style="margin-bottom: 5px;">Customer responsible for pre-flight</li>
-                        <li style="margin-bottom: 5px;">Basic equipment package</li>
-                    </ul>
-                </div>
-                <p><strong id="dry-rate-best-for">Best for experienced pilots</strong></p>
+                <p><strong id="wet-rate-best-for">Block time pricing available</strong></p>
             </div>
         </div>
         
         <div class="payment-info">
             <h2>Payment</h2>
-            <p><strong id="payment-method">Cash Only</strong> - <span id="payment-timing">Payment is due t the time of pre-flight</span>. <span id="payment-notes">Please bring exact change when possible.</span></p>
+            <p><strong id="payment-method">Cash Only</strong> - <span id="payment-timing">Payment due at completion of flight</span>. <span id="payment-notes">Please bring exact change when possible.</span></p>
         </div>
         
         <div class="policies">
@@ -89,7 +77,6 @@
                     <h3>Fuel</h3>
                     <ul id="fuel-policy">
                         <li>100LL aviation fuel required</li>
-                        <li>Renter provides all fuel</li>
                         <li>Return aircraft with same fuel level</li>
                         <li>Fuel available on field at KTOC</li>
                     </ul>
@@ -98,7 +85,7 @@
                 <div class="policy-section">
                     <h3>Insurance</h3>
                     <ul id="insurance-policy">
-                        <li>Renter's insurance required for all flights</li>
+                        <li>Renter's insurance preferred for all flights</li>
                         <li>Must meet minimum coverage requirements</li>
                         <li>Certificate of insurance required before flight</li>
                         <li>Insurance verified at check-in</li>
@@ -107,6 +94,7 @@
             </div>
         </div>
         
+        </main>
         <footer>
             <p>&copy; 2025 <span id="business-name">Currahee Aviation</span> | KTOC Toccoa Regional Airport | flycurrahee.net</p>
         </footer>
@@ -138,17 +126,11 @@
 
             // Populate rates from business config
             document.getElementById('wet-rate').textContent = BUSINESS_CONFIG.wetRate;
-            document.getElementById('dry-rate').textContent = BUSINESS_CONFIG.dryRate;
 
             // Populate pricing details
             if (PRICING_CONFIG.wetRate) {
                 populateList('wet-rate-includes', PRICING_CONFIG.wetRate.includes);
-                document.getElementById('wet-rate-best-for').textContent = `Best for ${PRICING_CONFIG.wetRate.bestFor}`;
-            }
-
-            if (PRICING_CONFIG.dryRate) {
-                populateList('dry-rate-includes', PRICING_CONFIG.dryRate.includes);
-                document.getElementById('dry-rate-best-for').textContent = `Best for ${PRICING_CONFIG.dryRate.bestFor}`;
+                document.getElementById('wet-rate-best-for').textContent = PRICING_CONFIG.wetRate.bestFor;
             }
 
             // Populate payment information
@@ -181,7 +163,6 @@
             if (POLICIES_CONFIG.fuel) {
                 const fuelItems = [
                     POLICIES_CONFIG.fuel.type,
-                    POLICIES_CONFIG.fuel.responsibility,
                     POLICIES_CONFIG.fuel.return,
                     POLICIES_CONFIG.fuel.location
                 ];
@@ -190,7 +171,7 @@
 
             if (POLICIES_CONFIG.insurance) {
                 const insuranceItems = [
-                    POLICIES_CONFIG.insurance.requirement,
+                    POLICIES_CONFIG.insurance.preferred,
                     POLICIES_CONFIG.insurance.coverage,
                     POLICIES_CONFIG.insurance.documentation,
                     POLICIES_CONFIG.insurance.verification
@@ -210,6 +191,14 @@
                 });
             }
         }
+    </script>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
+            });
+        })();
     </script>
 </body>
 </html>

@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currahee Aviation - Flight Hours in Toccoa, GA</title>
     <meta name="description" content="Aircraft rental at KTOC Toccoa Regional Airport. 1965 Cessna 172 available for building flight hours. Competitive rates, scenic North Georgia flying.">
-    <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
     <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <h1 class="sr-only">Currahee Aviation</h1>
             <div class="header-logo-container">
                 <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
             </div>
@@ -24,6 +28,7 @@
             </nav>
         </header>
 
+        <main>
         <!-- Featured Aircraft Image -->
         <div class="aircraft-image-container" style="margin-bottom: 30px;">
             <img src="Curahee-Aviation/assets/images/aircraft/aircraft-1.JPG" alt="Cessna 172 aircraft" 
@@ -36,8 +41,7 @@
                 <h2>Our Aircraft</h2>
                 <h3><span id="aircraft-year">1965</span> <span id="aircraft-model">Cessna 172</span></h3>
                 <p>Experience flight in our well-maintained classic Cessna 172. Perfect for building up flight hours, ideal for student pilots.</p>
-                <div class="rate"><span id="wet-rate">$180</span>/hr | <span id="dry-rate">Dry rate on request</span></div>
-                <p style="font-size: 0.9em; color: #6b7280; margin-top: 10px;">*Customer provides fuel for both rates</p>
+                <div class="rate"><span id="wet-rate">$180</span>/hr</div>
             </div>
             
             <div class="card">
@@ -60,14 +64,14 @@
                 <div class="contact-item">
                     <span>📞</span>
                     <strong>Phone:</strong>
-                    <a href="tel:" id="phone-link">
+                    <a href="tel:+17064917293" id="phone-link">
                         <span id="phone-number">(706) 491-7293</span>
                     </a>
                 </div>
                 <div class="contact-item">
                     <span>✉️</span>
                     <strong>Email:</strong>
-                    <a href="mailto:" id="email-link">
+                    <a href="mailto:andrewburkhart@flycurrahee.net" id="email-link">
                         <span id="email-address">andrewburkhart@flycurrahee.net</span>
                     </a>
                 </div>
@@ -77,6 +81,7 @@
             </p>
         </div>
         
+        </main>
         <footer>
             <p>&copy; 2025 <span id="business-name-footer">Currahee Aviation</span> | KTOC Toccoa Regional Airport | flycurrahee.net</p>
             <p>Cash Payment Only | Call for Scheduling and Information</p>
@@ -113,20 +118,18 @@
 
             phoneElements.forEach(el => el.textContent = CONTACT_INFO.phone);
             emailElements.forEach(el => el.textContent = CONTACT_INFO.email);
-            phoneLinks.forEach(el => el.href = 'tel:' + CONTACT_INFO.phone);
+            phoneLinks.forEach(el => el.href = 'tel:+1' + CONTACT_INFO.phone.replace(/\D/g, ''));
             emailLinks.forEach(el => el.href = 'mailto:' + CONTACT_INFO.email);
             businessNameElements.forEach(el => el.textContent = CONTACT_INFO.businessName);
 
             // Populate business information
             const taglineElement = document.getElementById('tagline');
             const wetRateElements = document.querySelectorAll('#wet-rate');
-            const dryRateElements = document.querySelectorAll('#dry-rate');
             const aircraftYearElements = document.querySelectorAll('#aircraft-year, #aircraft-year-2');
             const aircraftModelElements = document.querySelectorAll('#aircraft-model, #aircraft-model-2');
 
             if (taglineElement) taglineElement.textContent = BUSINESS_CONFIG.tagline;
             wetRateElements.forEach(el => el.textContent = BUSINESS_CONFIG.wetRate);
-            dryRateElements.forEach(el => el.textContent = BUSINESS_CONFIG.dryRate);
             aircraftYearElements.forEach(el => el.textContent = BUSINESS_CONFIG.aircraftYear);
             aircraftModelElements.forEach(el => el.textContent = BUSINESS_CONFIG.aircraftModel);
 
@@ -139,8 +142,15 @@
 
         function initCarousel() {
             // No carousel functionality needed
-            console.log('Homepage loaded');
         }
+    </script>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
+            });
+        })();
     </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ const RENTAL_CONFIG = {
     // Insurance Requirements
     insuranceRequirements: [
         "Aircraft insured by owner",
-        "Supplimental insurance optional"
+        "Supplemental insurance preferred"
     ],
     
     // Checkout Procedures

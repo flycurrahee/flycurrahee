@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Currahee Aviation</title>
     <meta name="description" content="Contact Currahee Aviation for aircraft rental booking and information. Located at KTOC Toccoa Regional Airport in North Georgia.">
-    <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
     <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <h1 class="sr-only">Contact — Currahee Aviation</h1>
             <div class="header-logo-container">
                 <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo-small" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
             </div>
@@ -24,6 +28,7 @@
             </nav>
         </header>
 
+        <main>
         <div class="contact-grid">
             <div class="card">
                 <h2>Contact Information</h2>
@@ -37,7 +42,7 @@
                     <button onclick="callNow()" style="background: #059669; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">
                         📞 Call Now
                     </button>
-                    <a href="mailto:" id="email-contact-link" style="background: #1e3a8a; color: white; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;">
+                    <a href="mailto:andrewburkhart@flycurrahee.net" id="email-contact-link" style="background: #1e3a8a; color: white; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;">
                         ✉️ Send Email
                     </a>
                 </div>
@@ -81,8 +86,8 @@
                 <div class="location-details">
                     <p><strong>Airport:</strong> <span id="airport-id">KTOC</span> - <span id="airport-name">Toccoa Regional Airport</span></p>
                     <p><strong>Address:</strong> <span id="airport-address">899 Airport Rd, Toccoa, GA 30577</span></p>
-                    <p><strong>Elevation:</strong> <span id="airport-elevation">948 feet MSL</span></p>
-                    <p><strong>Runway:</strong> <span id="airport-runway">5/23 - 4,001 x 75 feet</span></p>
+                    <p><strong>Elevation:</strong> <span id="airport-elevation">986 feet MSL</span></p>
+                    <p><strong>Runway:</strong> <span id="airport-runway">03/21 5008' x 100'; 09/27 2951' x 50'</span></p>
                     <p><strong>Surface:</strong> <span id="airport-surface">Asphalt</span></p>
                     <p><strong>Lighting:</strong> <span id="airport-lighting">MIRL, PAPI, Beacon</span></p>
                     <p><strong>Services:</strong> <span id="airport-services">100LL fuel available</span></p>
@@ -99,6 +104,7 @@
             </div>
         </div>
 
+        </main>
         <footer>
             <p>&copy; 2025 <span id="business-name-footer">Currahee Aviation</span> | KTOC Toccoa Regional Airport | flycurrahee.net</p>
             <p>Serving the North Georgia mountains with safe, reliable flight</p>
@@ -168,9 +174,9 @@
 
         function callNow() {
             if (typeof CONTACT_INFO !== 'undefined' && CONTACT_INFO.phone) {
-                window.location.href = 'tel:' + CONTACT_INFO.phone;
+                window.location.href = 'tel:+1' + CONTACT_INFO.phone.replace(/\D/g, '');
             } else {
-                window.location.href = 'tel:(706) 491-7293';
+                window.location.href = 'tel:+17064917293';
             }
         }
 
@@ -186,6 +192,14 @@
                 });
             });
         });
+    </script>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
+            });
+        })();
     </script>
 </body>
 </html>

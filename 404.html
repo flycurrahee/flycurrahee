@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Currahee Aviation</title>
+    <meta name="description" content="The page you were looking for could not be found. Return to Currahee Aviation.">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
+    <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="sr-only">Page Not Found — Currahee Aviation</h1>
+            <div class="header-logo-container">
+                <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo-small" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="aircraft.html">Aircraft</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+        <div class="contact-cta" style="margin-top: 30px;">
+            <h2>Page Not Found</h2>
+            <p>The page you were looking for doesn't exist or has been moved.</p>
+            <p style="margin-top: 20px;">
+                <a href="index.html" style="background: #1e3a8a; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;">
+                    Return to Home
+                </a>
+            </p>
+        </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Currahee Aviation | KTOC Toccoa Regional Airport | flycurrahee.net</p>
+        </footer>
+    </div>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -7,7 +7,6 @@ const AIRCRAFT_CONFIG = {
     model: "172",
     year: "1965",
     
-    // Engine Specifications - [edit] "O-300D" changed to new avionics suite
     engine: "O-300D",
     horsepower: "145 HP",
     

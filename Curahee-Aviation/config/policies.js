@@ -25,14 +25,13 @@ const POLICIES_CONFIG = {
     // Fuel Policy
     fuel: {
         type: "100LL aviation fuel required",
-        responsibility: "Renter provides all fuel",
         return: "Return aircraft with same fuel level",
         location: "Fuel available on field at KTOC"
     },
-    
+
     // Insurance Policy
     insurance: {
-        requirement: "Renter's insurance required for all flights",
+        preferred: "Renter's insurance preferred for all flights",
         coverage: "Must meet minimum coverage requirements",
         documentation: "Certificate of insurance required before flight",
         verification: "Insurance verified at check-in"

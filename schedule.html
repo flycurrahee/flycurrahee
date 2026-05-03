@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule - Currahee Aviation</title>
     <meta name="description" content="Schedule your aircraft rental at Currahee Aviation. Book your Cessna 172 flight time at KTOC Toccoa Regional Airport.">
-    <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
     <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <h1 class="sr-only">Schedule — Currahee Aviation</h1>
             <div class="header-logo-container">
                 <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo-small" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
             </div>
@@ -24,6 +28,7 @@
             </nav>
         </header>
 
+        <main>
         <div class="schedule-grid">
             <div class="card">
                 <h2>How to Book</h2>
@@ -67,7 +72,7 @@
         <div class="schedule-grid">
             <div class="card weather-card">
                 <h2>⛅ Weather Policy</h2>
-                <p style="margin-bottom: 15px;"><strong id="weather-policy">Weather minimums are pilot decision</strong></p>
+                <p style="margin-bottom: 15px;"><strong id="weather-policy">Weather minimums are pilot discretion</strong></p>
                 <ul style="margin-left: 20px;" id="weather-details">
                     <li>Pilot-in-command determines flight safety</li>
                     <li>Weather cancellations are free of charge</li>
@@ -95,15 +100,15 @@
                 <div class="contact-item">
                     <span>📞</span>
                     <strong>Phone:</strong>
-                    <a href="tel:" id="phone-link">
-                        <span id="phone-number">(706) 555-0123</span>
+                    <a href="tel:+17064917293" id="phone-link">
+                        <span id="phone-number">(706) 491-7293</span>
                     </a>
                 </div>
                 <div class="contact-item">
                     <span>✉️</span>
                     <strong>Email:</strong>
-                    <a href="mailto:" id="email-link">
-                        <span id="email-address">info@flycurrahee.net</span>
+                    <a href="mailto:andrewburkhart@flycurrahee.net" id="email-link">
+                        <span id="email-address">andrewburkhart@flycurrahee.net</span>
                     </a>
                 </div>
             </div>
@@ -112,6 +117,7 @@
             </p>
         </div>
         
+        </main>
         <footer>
             <p>&copy; 2025 <span id="business-name">Currahee Aviation</span> | KTOC Toccoa Regional Airport | flycurrahee.net</p>
         </footer>
@@ -137,7 +143,7 @@
             document.getElementById('business-name').textContent = CONTACT_INFO.businessName;
             document.getElementById('phone-number').textContent = CONTACT_INFO.phone;
             document.getElementById('email-address').textContent = CONTACT_INFO.email;
-            document.getElementById('phone-link').href = 'tel:' + CONTACT_INFO.phone;
+            document.getElementById('phone-link').href = 'tel:+1' + CONTACT_INFO.phone.replace(/\D/g, '');
             document.getElementById('email-link').href = 'mailto:' + CONTACT_INFO.email;
 
             // Populate business hours
@@ -156,7 +162,11 @@
                 
                 SCHEDULE_CONFIG.bookingSteps.forEach(step => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<strong>${step.title}</strong><br>${step.description}`;
+                    const strong = document.createElement('strong');
+                    strong.textContent = step.title;
+                    li.appendChild(strong);
+                    li.appendChild(document.createElement('br'));
+                    li.appendChild(document.createTextNode(step.description));
                     stepsContainer.appendChild(li);
                 });
             }
@@ -180,7 +190,7 @@
 
             // Populate response time
             if (SCHEDULE_CONFIG.scheduling && SCHEDULE_CONFIG.scheduling.responseTime) {
-                document.getElementById('response-time').textContent = SCHEDULE_CONFIG.scheduling.responseTime;
+                document.getElementById('response-time').textContent = 'We respond to all inquiries within ' + SCHEDULE_CONFIG.scheduling.responseTime;
             }
         }
 
@@ -195,6 +205,14 @@
                 });
             }
         }
+    </script>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
+            });
+        })();
     </script>
 </body>
 </html>

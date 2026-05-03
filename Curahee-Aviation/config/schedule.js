@@ -56,6 +56,6 @@ const SCHEDULE_CONFIG = {
     scheduling: {
         advanceNotice: "24-hour minimum advance booking",
         arrivalTime: "30 minutes early for paperwork",
-        responseTime: "We respond to all inquiries within 24 hours"
+        responseTime: "24 - 48 hours"
     }
 };

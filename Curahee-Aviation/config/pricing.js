@@ -7,11 +7,10 @@ const PRICING_CONFIG = {
         description: "Aircraft rental with standard equipment",
         includes: [
             "Aircraft rental",
-            "Standard avionics and equipment", 
-            "Pre-flight inspection",
-            "Customer provides fuel"
+            "Standard avionics and equipment",
+            "Pre-flight inspection"
         ],
-        bestFor: "10+ hrs"
+        bestFor: "Block time pricing available"
     },
     
     // Dry Rate Details
@@ -29,7 +28,7 @@ const PRICING_CONFIG = {
 
     payment: {
         method: "Cash only",
-        timing: "Payment due at pre-flight",
+        timing: "Payment due at completion of flight",
         notes: "Please bring exact change when possible"
     },
     

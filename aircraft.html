@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aircraft - Currahee Aviation</title>
     <meta name="description" content="Our 1965 Cessna 172 aircraft specifications, rental rates, and requirements at KTOC Toccoa Regional Airport.">
-    <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
+    <link rel="icon" type="image/png" href="Curahee-Aviation/assets/images/logos/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
     <link rel="stylesheet" href="Curahee-Aviation/assets/css/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <h1 class="sr-only">Aircraft — Currahee Aviation</h1>
             <div class="header-logo-container">
                 <img src="Curahee-Aviation/assets/images/logos/currahee-logo.png" alt="Currahee Aviation Logo" class="header-logo-small" onerror="this.src='Curahee-Aviation/assets/images/logos/currahee-logo.jpg'; this.onerror=function(){this.style.display='none'};">
             </div>
@@ -24,6 +28,7 @@
             </nav>
         </header>
 
+        <main>
         <!-- Aircraft Photo Gallery - Auto Slideshow -->
         <div class="aircraft-gallery-preview" style="margin-bottom: 30px;">
             <div style="position: relative; width: 100%; height: 350px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden;">
@@ -46,33 +51,6 @@
             </div>
         </div>
 
-        <!-- Photo Gallery Modal -->
-        <div id="photoGalleryModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center;">
-            <div style="position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center;">
-                <!-- Close Button -->
-                <button onclick="closePhotoGallery()" style="position: absolute; top: -50px; right: 0; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 1001;">
-                    ✕
-                </button>
-                
-                <!-- Previous Button -->
-                <button onclick="previousPhoto()" style="position: absolute; left: -60px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 30px; padding: 15px 20px; border-radius: 50%; cursor: pointer; z-index: 1001;">
-                    ←
-                </button>
-                
-                <!-- Photo Display -->
-                <img id="galleryPhoto" src="" alt="Aircraft Photo" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px;">
-                
-                <!-- Next Button -->
-                <button onclick="nextPhoto()" style="position: absolute; right: -60px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 30px; padding: 15px 20px; border-radius: 50%; cursor: pointer; z-index: 1001;">
-                    →
-                </button>
-                
-                <!-- Photo Counter -->
-                <div id="photoCounter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;">
-                    1 of 5
-                </div>
-            </div>
-        </div>
 
         <div class="aircraft-info">
             <div class="card">
@@ -86,7 +64,7 @@
                     <li><span><strong>Service Ceiling:</strong></span> <span id="spec-ceiling">13,100 ft</span></li>
                     <li><span><strong>Range:</strong></span> <span id="spec-range">640 nautical miles</span></li>
                     <li><span><strong>Seating:</strong></span> <span id="spec-seating">4 seats</span></li>
-                    <li><span><strong>Fuel Capacity:</strong></span> <span id="spec-fuel">42 gallons</span></li>
+                    <li><span><strong>Fuel Capacity:</strong></span> <span id="spec-fuel">36 gallons usable</span></li>
                 </ul>
             </div>
             
@@ -112,7 +90,6 @@
                 <div>
                     <h3>Wet Rate</h3>
                     <div class="rate"><span id="wet-rate">$180</span>/hr</div>
-                    <p>Aircraft only - fuel separate</p>
                 </div>
                 <hr style="margin: 20px 0; border: 1px solid rgba(255,255,255,0.3);">
                 <div>
@@ -133,7 +110,7 @@
                 <h3 style="margin-top: 15px;">Insurance Requirements:</h3>
                 <ul id="insurance-requirements" style="margin: 10px 0 0 20px;">
                     <li>Aircraft insured by owner</li>
-                    <li>Supplimental insurance optional</li>
+                    <li>Supplemental insurance preferred</li>
                 </ul>
                 
                 <h3 style="margin-top: 15px;">Checkout Procedures:</h3>
@@ -145,6 +122,7 @@
             </div>
         </div>
         
+        </main>
         <footer>
             <p>&copy; 2025 <span id="business-name">Currahee Aviation</span> | KTOC Toccoa Regional Airport | flycurrahee.net</p>
         </footer>
@@ -163,14 +141,12 @@
         let currentMainPhotoIndex = 0;
         const MAIN_SLIDESHOW_INTERVAL = 4000; // 4 seconds between photos
         
-        // Photo slideshow array (renamed to avoid conflicts) 
-        // iOS image format potential issues
         const slideshowPhotos = [
             { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-1.JPG', alt: 'Aircraft exterior view' },
             { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-2.JPG', alt: 'Aircraft cockpit view' },
             { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-3.JPG', alt: 'Aircraft interior view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-4.JPG', alt: 'Aircraft engine view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-5.JPG', alt: 'Aircraft on ramp view' }
+            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-4.jpg', alt: 'Aircraft engine view' },
+            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-5.jpg', alt: 'Aircraft on ramp view' }
         ];
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -184,11 +160,7 @@
                 console.warn('Some config files not loaded, using default content');
             }
             
-            // Start auto slideshow immediately
             startMainSlideshow();
-            
-            // Initialize carousel
-            initCarousel();
         });
 
         function startMainSlideshow() {
@@ -219,30 +191,9 @@
             const photo = slideshowPhotos[currentMainPhotoIndex];
             const photoElement = document.getElementById('mainGalleryPhoto');
             const counterElement = document.getElementById('mainPhotoCounter');
-            
-            // Try uppercase first, fallback to lowercase
-            const img = new Image();
-            img.onload = function() {
-                photoElement.src = this.src;
-                photoElement.alt = photo.alt;
-            };
-            img.onerror = function() {
-                // Try lowercase version
-                const lowercaseSrc = photo.src.replace('.JPG', '.jpg');
-                const fallbackImg = new Image();
-                fallbackImg.onload = function() {
-                    photoElement.src = this.src;
-                    photoElement.alt = photo.alt;
-                };
-                fallbackImg.onerror = function() {
-                    console.warn('Photo not found:', photo.src);
-                };
-                fallbackImg.src = lowercaseSrc;
-            };
-            img.src = photo.src;
-            
-            // Update counter
-            counterElement.textContent = `${currentMainPhotoIndex + 1} of ${slideshowPhotos.length}`;
+            photoElement.src = photo.src;
+            photoElement.alt = photo.alt;
+            counterElement.textContent = (currentMainPhotoIndex + 1) + ' of ' + slideshowPhotos.length;
         }
 
         // Pause slideshow on hover
@@ -285,17 +236,25 @@
                 const avionicsList = document.getElementById('avionics-list');
                 if (avionicsList && typeof AIRCRAFT_CONFIG.avionics === 'object') {
                     avionicsList.innerHTML = '';
-                    
-                    // Add each avionics item
                     Object.entries(AIRCRAFT_CONFIG.avionics).forEach(([key, value]) => {
                         const li = document.createElement('li');
                         if (key === 'garminSuite') {
-                            li.innerHTML = `<span><strong>${value}</strong></span>`;
-                        } else if (key === 'backup') {
-                            li.innerHTML = `<span><strong>Backup:</strong></span> <span>${value}</span>`;
+                            const span = document.createElement('span');
+                            const strong = document.createElement('strong');
+                            strong.textContent = value;
+                            span.appendChild(strong);
+                            li.appendChild(span);
                         } else {
-                            const label = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
-                            li.innerHTML = `<span><strong>${label}:</strong></span> <span>${value}</span>`;
+                            const labelText = key === 'backup' ? 'Backup' : key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
+                            const labelSpan = document.createElement('span');
+                            const strong = document.createElement('strong');
+                            strong.textContent = labelText + ':';
+                            labelSpan.appendChild(strong);
+                            const valueSpan = document.createElement('span');
+                            valueSpan.textContent = value;
+                            li.appendChild(labelSpan);
+                            li.appendChild(document.createTextNode(' '));
+                            li.appendChild(valueSpan);
                         }
                         avionicsList.appendChild(li);
                     });
@@ -323,142 +282,14 @@
                 });
             }
         }
-
-        function initCarousel() {
-            // No carousel functionality needed
-            console.log('Aircraft page loaded');
-        }
-
-        // Photo Gallery Variables
-        let currentPhotoIndex = 0;
-        const aircraftPhotos = [
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-1.JPG', alt: 'Aircraft exterior view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-2.JPG', alt: 'Aircraft cockpit view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-3.JPG', alt: 'Aircraft interior view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-4.JPG', alt: 'Aircraft engine view' },
-            { src: 'Curahee-Aviation/assets/images/aircraft/aircraft-5.JPG', alt: 'Aircraft on ramp view' }
-        ];
-
-        // Photo Gallery Variables
-        let galleryInterval;
-        const SLIDESHOW_INTERVAL = 3000; // 3 seconds between photos
-
-        // Photo Gallery Functions
-        function openPhotoGallery() {
-            currentPhotoIndex = 0;
-            document.getElementById('photoGalleryModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            showCurrentPhoto();
-            startSlideshow();
-        }
-
-        function closePhotoGallery() {
-            document.getElementById('photoGalleryModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            stopSlideshow();
-        }
-
-        function startSlideshow() {
-            stopSlideshow(); // Clear any existing interval
-            galleryInterval = setInterval(nextPhoto, SLIDESHOW_INTERVAL);
-        }
-
-        function stopSlideshow() {
-            if (galleryInterval) {
-                clearInterval(galleryInterval);
-                galleryInterval = null;
-            }
-        }
-
-        function nextPhoto() {
-            currentPhotoIndex = (currentPhotoIndex + 1) % aircraftPhotos.length;
-            showCurrentPhoto();
-            // Restart the slideshow timer when user manually navigates
-            if (galleryInterval) {
-                startSlideshow();
-            }
-        }
-
-        function previousPhoto() {
-            currentPhotoIndex = (currentPhotoIndex - 1 + aircraftPhotos.length) % aircraftPhotos.length;
-            showCurrentPhoto();
-            // Restart the slideshow timer when user manually navigates
-            if (galleryInterval) {
-                startSlideshow();
-            }
-        }
-
-        function showCurrentPhoto() {
-            const photo = aircraftPhotos[currentPhotoIndex];
-            const photoElement = document.getElementById('galleryPhoto');
-            const counterElement = document.getElementById('photoCounter');
-            
-            // Try uppercase first, fallback to lowercase
-            const img = new Image();
-            img.onload = function() {
-                photoElement.src = this.src;
-                photoElement.alt = photo.alt;
-            };
-            img.onerror = function() {
-                // Try lowercase version
-                const lowercaseSrc = photo.src.replace('.JPG', '.jpg');
-                const fallbackImg = new Image();
-                fallbackImg.onload = function() {
-                    photoElement.src = this.src;
-                    photoElement.alt = photo.alt;
-                };
-                fallbackImg.onerror = function() {
-                    console.warn('Photo not found:', photo.src);
-                };
-                fallbackImg.src = lowercaseSrc;
-            };
-            img.src = photo.src;
-            
-            // Update counter
-            counterElement.textContent = `${currentPhotoIndex + 1} of ${aircraftPhotos.length}`;
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(event) {
-            const modal = document.getElementById('photoGalleryModal');
-            if (modal.style.display === 'flex') {
-                switch(event.key) {
-                    case 'Escape':
-                        closePhotoGallery();
-                        break;
-                    case 'ArrowLeft':
-                        previousPhoto();
-                        break;
-                    case 'ArrowRight':
-                        nextPhoto();
-                        break;
-                }
-            }
-        });
-
-        // Close modal when clicking outside the photo
-        document.getElementById('photoGalleryModal').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closePhotoGallery();
-            }
-        });
-
-        // Pause slideshow on hover, resume on mouse leave
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('photoGalleryModal');
-            
-            modal.addEventListener('mouseenter', function() {
-                if (modal.style.display === 'flex') {
-                    stopSlideshow();
-                }
+    </script>
+    <script>
+        (function() {
+            var page = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('nav a').forEach(function(link) {
+                if (link.getAttribute('href') === page) link.classList.add('nav-active');
             });
-            
-            modal.addEventListener('mouseleave', function() {
-                if (modal.style.display === 'flex') {
-                    startSlideshow();
-                }
-            });
-        });
+        })();
     </script>
 </body>
 </html>
